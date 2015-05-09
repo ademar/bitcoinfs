@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        "Secp256k1.NET"
+    </assembly>
+    <members>
+        <member name="M:Secp256k1.Signatures.GetPublicKey(System.Byte[],System.Boolean)">
+            <summary>Gets the public key associated with a private key.  Returns null on failure.</summary>
+            <param name="privateKey">The private key from which to extract the public key.</param>
+            <param name="compressed">True if the public key is to be compressed.</param>
+        </member>
+        <member name="M:Secp256k1.Signatures.VerifyPublicKey(System.Byte[])">
+            <summary>Verifies that a public key is valid.</summary>
+            <param name="publicKey">A public key to test for validity.</param>
+        </member>
+        <member name="M:Secp256k1.Signatures.VerifyPrivateKey(System.Byte[])">
+            <summary>Verifies that a private key is valid.  Returns true if valid.</summary>
+            <param name="privateKey">A private key to test for validity.</param>
+        </member>
+        <member name="M:Secp256k1.Signatures.RecoverKeyFromCompact(System.Byte[],System.Byte[],System.Int32,System.Boolean)">
+            <summary>Recovers a public key from a compact signature.  Success also indicates a valid signature.  Returns null on failure.</summary>
+            <param name="message">The message that was signed.  This data is not hashed.  For use with bitcoins, you probably want to double-SHA256 hash this before calling this method.</param>
+            <param name="signature">The signature provided that will also be tested for validity.  A return value other than null indicates this signature is valid.</param>
+            <param name="recoveryId">The recovery ID provided during a call to the SignCompact method.</param>
+            <param name="compressed">True if the public key is to be compressed.</param>
+        </member>
+        <member name="M:Secp256k1.Signatures.SignCompact(System.Byte[],System.Byte[],System.Int32@)">
+            <summary>Signs a message and returns the signature in compact form.  Returns null on failure.</summary>
+            <param name="message">The message to sign.  This data is not hashed.  For use with bitcoins, you probably want to double-SHA256 hash this before calling this method.</param>
+            <param name="privateKey">The private key to use to sign the message.</param>
+            <param name="recoveryId">This will contain the recovery ID needed to retrieve the key from the compact signature using the RecoverKeyFromCompact method.</param>
+        </member>
+        <member name="M:Secp256k1.Signatures.Sign(System.Byte[],System.Byte[])">
+            <summary>Signs a message and returns the signature.  Returns null on failure.</summary>
+            <param name="message">The message to sign.  This data is not hashed.  For use with bitcoins, you probably want to double-SHA256 hash this before calling this method.</param>
+            <param name="privateKey">The private key to use to sign the message.</param>
+        </member>
+        <member name="M:Secp256k1.Signatures.Verify(System.Byte[],System.Byte[],System.Byte[])">
+            <summary>Verifies that a signature is valid.</summary>
+            <param name="message">The message to verify.  This data is not hashed.  For use with bitcoins, you probably want to double-SHA256 hash this before calling this method.</param>
+            <param name="signature">The signature to test for validity. This must not be a compact key (Use RecoverKeyFromCompact instead).</param>
+            <param name="publicKey">The public key used to create the signature.</param>
+        </member>
+        <member name="F:Secp256k1.Signatures.VerifyResult.Error">
+            <summary>An unknown error has occurred.</summary>
+        </member>
+        <member name="F:Secp256k1.Signatures.VerifyResult.InvalidSignature">
+            <summary>An invalid signature was provided.</summary>
+        </member>
+        <member name="F:Secp256k1.Signatures.VerifyResult.InvalidPublicKey">
+            <summary>An invalid public key was provided.</summary>
+        </member>
+        <member name="F:Secp256k1.Signatures.VerifyResult.SignatureFailed">
+            <summary>The signature is not a match for this data.</summary>
+        </member>
+        <member name="F:Secp256k1.Signatures.VerifyResult.Verified">
+            <summary>The signature is valid.</summary>
+        </member>
+        <member name="T:Secp256k1.Signatures">
+            <summary>Encapsulates secp256k1 signature related operations</summary>
+        </member>
+    </members>
+</doc>

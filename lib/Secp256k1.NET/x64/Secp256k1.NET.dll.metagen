@@ -1,0 +1,30 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly Secp256k1.NET, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class Secp256k1.Signatures: AutoLayout, AnsiClass, Class, Public
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Verify(Byte[], Byte[], Byte[]): PrivateScope, Public, Static, HideBySig
+    Sign(Byte[], Byte[]): PrivateScope, Public, Static, HideBySig
+    SignCompact(Byte[], Byte[], Int32&(Out)): PrivateScope, Public, Static, HideBySig
+    RecoverKeyFromCompact(Byte[], Byte[], Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Static, HideBySig
+    VerifyPrivateKey(Byte[]): PrivateScope, Public, Static, HideBySig
+    VerifyPublicKey(Byte[]): PrivateScope, Public, Static, HideBySig
+    GetPublicKey(Byte[], Boolean(HasFieldMarshal)): PrivateScope, Public, Static, HideBySig
+Struct Secp256k1.Signatures+VerifyResult: AutoLayout, AnsiClass, Class, NestedPublic, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    VerifyResult Verified = 0 : Public, Static, Literal, HasDefault
+    VerifyResult SignatureFailed = 1 : Public, Static, Literal, HasDefault
+    VerifyResult InvalidPublicKey = 2 : Public, Static, Literal, HasDefault
+    VerifyResult InvalidSignature = 3 : Public, Static, Literal, HasDefault
+    VerifyResult Error = 4 : Public, Static, Literal, HasDefault
