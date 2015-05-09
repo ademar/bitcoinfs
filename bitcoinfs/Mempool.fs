@@ -139,7 +139,7 @@ let checkScript (utxoAccessor: IUTXOAccessor) (tx: Tx): Option<unit> =
                 ) 
             |> Seq.toList |> Option.sequence 
             |> Option.map(fun x -> x.All(fun x -> x)) // tx succeeds if all scripts succeed
-    (x.IsSome && x.Value) |> errorIfFalse "script failure"
+    (x.IsSome && x.Value) |> errorIfFalse (sprintf "script failure: %s" (tx.ToString()))
 
 let mempoolAccessor = new MempoolUTXOAccessor(utxoAccessor)
 let nopWriter = new NopUndoWriter()
@@ -171,14 +171,15 @@ let revalidate () =
 
 let addTx tx = 
     try
-        validate tx |> Option.iter(fun () ->
+        validate tx 
+        |> Option.iter(fun () ->
             listTx.Add(tx.Hash)
             mempool.Item(tx.Hash) <- tx
             broadcastToPeers.OnNext(new BitcoinMessage("tx", tx.ToByteArray()))
             logger.DebugF "Unconfirmed TX -> %s" (hashToHex tx.Hash)
             )
     with
-    | ValidationException e -> ignore() // printfn "Invalid tx: %s" (hashToHex tx.Hash)
+    | ValidationException e -> printfn "Invalid tx: %s" (hashToHex tx.Hash) // ignore() 
 
 (** 
 ## Message loop

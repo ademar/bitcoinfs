@@ -906,6 +906,8 @@ let connect(address: IPAddress) (port: int) =
             let stream = client.GetStream()
             return stream
             }
-    
-    if settings.UseSocks then socksConnect() else normalConnect()
+    // TODO: find out why sockets aren't working
+    // and check out why the UseSocks is plainly ignored apparently
+    normalConnect()
+    //if settings.UseSocks then socksConnect() else normalConnect()
 
