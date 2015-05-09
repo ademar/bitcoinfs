@@ -146,7 +146,7 @@ let errorIfFalse (errorMsg: string) (b: bool) = b |> Option.ofBool |> Option.ite
 
 Hashing functions. It's important to pass the digest by name i.e. in a factory function
 otherwise the digest is bound at the let and there will be a single digest per hashing function.
-As a result, hashing is no threat safe and hilarity ensues
+As a result, hashing is no thread safe and hilarity ensues
 *)
 let hashBlock (digest: unit -> HashAlgorithm) (input: byte[]): byte[] = digest().ComputeHash(input)
 

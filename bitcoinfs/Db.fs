@@ -58,6 +58,12 @@ To make a backup, the easiest way is to shutdown the application and copy the co
 UTXO database and the `bitcoin.db` file that has the associated metadata. The blocks can be saved too but they are not 
 vital.
 *)
+
+// TODO: add copying of bitcoin.db from project if it doesn't exist. To make sure anyone can start this without any additional required actions
+do
+    if not (Directory.Exists(baseDir)) then
+        Directory.CreateDirectory(baseDir) |> ignore
+
 let connectionString = sprintf "Data Source=%s/bitcoin.db" baseDir
 let dbLock = new obj() // Serialize all db access because of SQLite
 
