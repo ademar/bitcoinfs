@@ -68,7 +68,6 @@
     <Compile Include="Checks.fs" />
     <Compile Include="Blockchain.fs" />
     <Compile Include="Wallet.fs" />
-    <Compile Include="Test.fs" />
     <Compile Include="Main.fs" />
     <None Include="LevelDB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

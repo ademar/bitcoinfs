@@ -127,7 +127,6 @@ it's important to check the transactions before they are accepted into the pool.
 the memory pool gets revalidated and every invalid transaction gets booted out. In this case, it is because of a double-spend between
 the transactions in the block and the same one from the pool.
 *)
-let txHash = hashFromHex "d4c7e1458bc7d7c54e90cc95117afd95a7498931cc2aa11e18ab0c52fc4cc512"
 let checkScript (utxoAccessor: IUTXOAccessor) (tx: Tx): Option<unit> = 
     let x = 
         tx.TxIns 
@@ -139,7 +138,7 @@ let checkScript (utxoAccessor: IUTXOAccessor) (tx: Tx): Option<unit> =
                 ) 
             |> Seq.toList |> Option.sequence 
             |> Option.map(fun x -> x.All(fun x -> x)) // tx succeeds if all scripts succeed
-    (x.IsSome && x.Value) |> errorIfFalse (sprintf "script failure: %s" (tx.ToString()))
+    (x.IsSome && x.Value) |> errorIfFalse (sprintf "script failure: %s" (string tx))
 
 let mempoolAccessor = new MempoolUTXOAccessor(utxoAccessor)
 let nopWriter = new NopUndoWriter()

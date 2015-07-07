@@ -49,6 +49,7 @@ open Wallet
 open Db
 open Script
 
+(*
 (* The following stuff is for skipping validation during the import of a bootstrap file and for debugging purposes *)
 let skipScript (script: byte[]) = 
     script.Length = 25 && script.[0] = OP_DUP && script.[1] = OP_HASH160 && script.[24] = OP_CHECKSIG
@@ -120,7 +121,7 @@ let decodeTx (s: string) =
     use ms = new MemoryStream(hex)
     use reader = new BinaryReader(ms)
     Tx.Parse(reader)
-    
+
 let readBootstrap (firstBlock: int) (stream: Stream) =
     use reader = new BinaryReader(stream)
     let mutable i = firstBlock
@@ -149,6 +150,7 @@ let writeBootstrapFile() =
 
     use stream = new FileStream("D:/bootstrap-nnn.dat", FileMode.CreateNew, FileAccess.Write)
     writeBootstrap 345001 348000 stream
+*)
 
 let addLocalNode() =
     let myNode = new IPEndPoint(IPAddress.Loopback, 8333)
@@ -174,7 +176,7 @@ The main function initializes the application and waits forever
 let main argv = 
     Config.BasicConfigurator.Configure() |> ignore
 
-    // Db.scanUTXO()
+    //Db.scanUTXO()
     runNode()
     // writeBootstrapFile()
 

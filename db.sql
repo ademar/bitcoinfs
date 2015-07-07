@@ -69,5 +69,3 @@ select tx.amount, keys.address from tx, keys where tx.key_hash = keys.hash;
 select sum(tx.amount) from tx;
 select max(height) from header;
 select * from peerInfo order by ts desc;
-
-

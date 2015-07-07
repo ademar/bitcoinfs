@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 # Unit Tests from the Core Client
 *)
 
-module Test.Script
+module BitcoinFS.Test.Script
 
 (*** hide ***)
 open System
