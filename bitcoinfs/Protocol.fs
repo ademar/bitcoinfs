@@ -44,6 +44,7 @@ open System.Reactive.Subjects
 open System.Reactive.Disposables
 open System.Threading.Tasks
 open System.Security.Cryptography
+open FSharp.Configuration
 open FSharpx
 open FSharpx.Collections
 open FSharpx.Choice
